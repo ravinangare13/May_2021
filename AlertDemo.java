@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+import java.util.concurrent.TimeUnit;
+
+=======
+>>>>>>> main
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,49 +13,43 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class AlertDemo {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.setProperty("webdriver.chrome.driver","D:\\chromedriver\\chromedriver.exe");
-		WebDriver driver= new ChromeDriver();
+
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Sharayu\\Downloads\\chromedriver_win32 (4)\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://demoqa.com/alerts");
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 
-		driver.get("https://demoqa.com/alerts");
 		
-		WebElement AlertButton=driver.findElement(By.xpath("//button[@id='alertButton']"));
+		WebElement AlertButton = driver.findElement(By.xpath("//button[@id='alertButton']"));
 		AlertButton.click();
 		driver.switchTo().alert().accept();
 		
-		WebElement TimeAlert=driver.findElement(By.xpath("//button[@id='timerAlertButton']"));
-		TimeAlert.click();
-				
-		WebDriverWait wait=new WebDriverWait(driver, 10);
+		WebElement TimerAlert = driver.findElement(By.xpath("//button[@id='timerAlertButton']"));
+		TimerAlert.click();
+		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.alertIsPresent()).accept();
-				
-		WebElement ConfirmButton=driver.findElement(By.xpath("//button[@id='confirmButton']"));
+		
+		WebElement ConfirmButton = driver.findElement(By.xpath("//button[@id='confirmButton']"));
 		ConfirmButton.click();
-		String AlertMessage= driver.switchTo().alert().getText();
-		System.out.println(AlertMessage);
+		String alertMessage = driver.switchTo().alert().getText();
+		System.out.println(alertMessage);
 		driver.switchTo().alert().dismiss();
 		
-		//to close the ad
 		driver.findElement(By.xpath("//a[@id='close-fixedban']")).click();
-		WebElement PromptButton=driver.findElement(By.xpath("//button[@id='promtButton']"));
-		PromptButton.click();
-		driver.switchTo().alert().sendKeys("Anand");
+		
+		WebElement PromptAlert = driver.findElement(By.xpath("//button[@id='promtButton']"));
+		PromptAlert.click();
+		driver.switchTo().alert().sendKeys("Ravi Nangare");
 		driver.switchTo().alert().accept();
 		
-		//Search frame using iframe Switch to frame and find element and perform operation
 		driver.navigate().to("https://demoqa.com/frames");
-		WebElement Frame1=driver.findElement(By.id("frame1"));
-		driver.switchTo().frame(Frame1);
-		String Message=driver.findElement(By.xpath("//h1[@id='sampleHeading']")).getText();
-		System.out.println(Message);
 		
-		//driver.close();
-		
-		
-		
-		
+		//WebElement Frame1 = driver.findElement(By.id("frame1"));
+		//driver.switchTo().frame(Frame1);
+		driver.switchTo().frame("frame1");
+		//driver.switchTo().frame(1);
+		String message = driver.findElement(By.xpath("//h1[@id='sampleHeading'][1]")).getText();
+		System.out.println(message);
 	}
-	
-
 }
