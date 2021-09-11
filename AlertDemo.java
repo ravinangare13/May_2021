@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 import java.util.concurrent.TimeUnit;
 
+=======
+>>>>>>> main
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class AlertDemo {
 
 	public static void main(String[] args) {
+
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Sharayu\\Downloads\\chromedriver_win32 (4)\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://demoqa.com/alerts");
@@ -48,5 +52,4 @@ public class AlertDemo {
 		String message = driver.findElement(By.xpath("//h1[@id='sampleHeading'][1]")).getText();
 		System.out.println(message);
 	}
-
 }
